@@ -1,6 +1,10 @@
+package Scanners;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class BookManager {
     
-    private static String filepathy = "C:\\Users\\NaritaA\\Documents\\NetBeansProjects\\SchoolPractical\\SchoolPractical\\src\\books.txt";
+    private static String filepathy = "data\\books.txt";
     
     public static String getBook(){
          String output = "";
@@ -56,10 +60,39 @@ public class BookManager {
                 output += name + "\n";
             
             }
+            fileSc.close();
         } catch (FileNotFoundException ex) {
             System.out.println("File not found");
         }
         return output;        
     }
+    public static void addBook(String title,String author){
+        try {
+            FileWriter fw = new FileWriter(filepathy,true);
+             PrintWriter pw = new PrintWriter(fw) ;
+             
+                pw.println(title + "#" + author);
+                
+                pw.close();  
+        } catch (IOException ex) {
+            System.out.println("File not found");
+        }
+            
+    }
+    //do delete book method toooooo
+//    public static void deleteBook(String title,String author){
+//        try {
+//            FileWriter fw = new FileWriter(filepathy,true);
+//             PrintWriter pw = new PrintWriter(fw) ;
+//             
+//                pw.println();
+//                
+//                pw.close();  
+//        } catch (IOException ex) {
+//            System.out.println("File not found");
+//        }
+//            
+//    }
     
+   
 }
