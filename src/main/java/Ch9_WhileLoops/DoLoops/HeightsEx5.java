@@ -5,10 +5,32 @@
  */
 package Ch9_WhileLoops.DoLoops;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NaritaA
  */
 public class HeightsEx5 {
+    public static void main(String []args){
+        
+        //enter heights {in meters} of unknown quantity of people
+        String userInput = JOptionPane.showInputDialog("Enter a height in meters");
+        int numUserInput = Integer.parseInt(userInput);
+        
+        int highestHeight = 0;
+       while(numUserInput >= 0){
+           
+           if(highestHeight < numUserInput){
+               highestHeight = numUserInput;
+           }
+           
+            userInput = JOptionPane.showInputDialog("Enter a height in meters");
+            numUserInput = Integer.parseInt(userInput);
+           
+       }
+        System.out.println("Tallest person: " + highestHeight);
+             
+    }
     
 }
