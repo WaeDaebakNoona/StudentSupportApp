@@ -20,21 +20,26 @@ public class RainfallEx5 {
         
         int totalRain = 0;
         //count is number of days
-        int count = 0;
+        int count = 1;
         int maxRainfall = 0;
+        int maxCount = 0;
         
         while(intRainFigures >=0){
             totalRain = totalRain + intRainFigures;
+           
+            
+            if(maxRainfall <= intRainFigures){
+                maxRainfall = intRainFigures;
+                maxCount = count;
+            }
             rainFigures = JOptionPane.showInputDialog("Input figures");
             intRainFigures = Integer.parseInt(rainFigures);
             count ++;
-            if(maxRainfall <= intRainFigures){
-                maxRainfall = intRainFigures;
-            }
+            
         }
         int ave = totalRain/count;
         System.out.println("Average daily rainfall: " + ave);
-        System.out.println("Maximum: " + maxRainfall);
+        System.out.println("Maximum: " + maxRainfall + " Day: " + maxCount);
     
     }   
 }

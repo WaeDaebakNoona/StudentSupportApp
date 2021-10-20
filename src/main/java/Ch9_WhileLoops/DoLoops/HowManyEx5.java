@@ -12,6 +12,17 @@ package Ch9_WhileLoops.DoLoops;
 public class HowManyEx5 {
     public static void main (String [] args){
     
+        //5.1 how many 1
+        int numSeriestotal = 610 ;
+        int numSeries = 2;
+        int count = 0;
+        
+        while(numSeries < 610){
+            numSeries = numSeries + 3;
+            count++;      
+        }
+        System.out.println(" Quantity: " + numSeries + " Sum: " + count);
+        //5.2
     }
     
 }
