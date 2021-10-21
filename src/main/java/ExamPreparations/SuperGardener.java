@@ -22,39 +22,72 @@ public class SuperGardener {
         roundNum = 1;
         //call oneRound method
         SuperGardener.oneRound();
-
+        for(int round = 0; round<6;){
+            hasWater = false;
+            
+        SuperGardener.oneRound();
+        round++;
+        int rand =0;
+        }
+      
     }
     public static void oneRound(){
         SuperGardener.drawGarden();
-        String displayInput = JOptionPane.showInputDialog("What do you want to do?\n" + "L:Move left\n" + "R:Move right\n" + "F:Fill up\n" + "W:Water plant\n" + "Q:Quit");
-        for(int i = 0; i<-1; i++){
-            SuperGardener.drawGarden();
-            if(displayInput.equals("Q")){
+        String displayKey = JOptionPane.showInputDialog("What do you want to do?\n" + "L:Move left\n" + "R:Move right\n" + "F:Fill up\n" + "W:Water plant\n" + "Q:Quit");
+
+        int numMoves = 0;
+        while(true){
+            
+
+            if(displayKey.equals("Q")){
                 break;
             }
-            if(displayInput.equals("L")){
+            if(displayKey.equals("L") && gardenerPos != 1){
                 gardenerPos = gardenerPos -1;
             }
-            if(displayInput.equals("R")){
+            if(displayKey.equals("R") && gardenerPos != 10){
                 gardenerPos = gardenerPos + 1;
             }
+            if(displayKey.equals("F")){
+                //fill up watering can?
+                
+                if(gardenerPos == 1){
+                    hasWater = true;
+                }
+            }
+            if(displayKey.equals("W")){
+                if(gardenerPos == plantPos &&  hasWater == true){     
+                }
+            }
+            if(gardenerPos == plantPos){
+                System.out.println("ROUND OVER");
+                System.out.println("The number of moves is: " + numMoves);
+                System.out.println();
+            }
+            SuperGardener.drawGarden();
+            displayKey = JOptionPane.showInputDialog("What do you want to do?\n" + "L:Move left\n" + "R:Move right\n" + "F:Fill up\n" + "W:Water plant\n" + "Q:Quit");
+
+            numMoves++;
         }
     }
     public static void drawGarden(){
         System.out.println("Round: " + roundNum + "\t" + "Watering can full: "+ hasWater);
-        System.out.println("W");
-        for(int i = 0; i<11; i++){
-            System.out.println(" - ");
+        System.out.print("W");
+        for(int i = 1; i<11; i++){
             //code
             if(gardenerPos == i){
-                System.out.println(" G "); 
+                System.out.print(" G "); 
             }
-            if(plantPos == i){
-                System.out.println(" P ");
+            else if(plantPos == i){
+                System.out.print(" P ");
             
             }
-            System.out.println("");
+            else{
+                System.out.print(" - ");
+            }
+           
         
-        }
+        } 
+        System.out.println();
     }
 }
