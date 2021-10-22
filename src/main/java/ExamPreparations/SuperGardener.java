@@ -24,7 +24,7 @@ public class SuperGardener {
         SuperGardener.oneRound();
         for(int round = 0; round<6;){
             hasWater = false;
-            
+            //dont know what to do here last question
         SuperGardener.oneRound();
         round++;
         int rand =0;
