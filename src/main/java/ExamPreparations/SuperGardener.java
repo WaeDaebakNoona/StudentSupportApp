@@ -25,9 +25,10 @@ public class SuperGardener {
         for(int round = 0; round<6;){
             hasWater = false;
             //dont know what to do here last question
-        SuperGardener.oneRound();
-        round++;
-        int rand =0;
+            SuperGardener.oneRound();
+            round++;
+            gardenerPos =(int)(Math.random()* 5);
+            plantPos =(int)(Math.random()* 10 + 6 );
         }
       
     }
