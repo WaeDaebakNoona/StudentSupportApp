@@ -29,10 +29,20 @@ public class IsolateChars {
         }
         System.out.println("Backwards: " + output);
         
+        int half = (len/2);
         
-        int ave = (len/2);
-        char aa = userInput.charAt(ave);
-        System.out.println("middel: " + aa);
+        
+        
+        if (len % 2 ==0) {
+            char mid1 = userInput.charAt(half-1) ;
+            char mid2 = userInput.charAt(half) ;
+            System.out.print("Middle: " +  mid1 + mid2);
+        } else {
+            char mid = userInput.charAt(half);
+            System.out.println("middle: " + mid);
+        }
+        
+       
         
         //only vowels in string = contains()
         
