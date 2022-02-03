@@ -13,14 +13,25 @@ import javax.swing.JOptionPane;
 public class CompareName {
     public static void main(String[] args) {
         
+        //initialise
         String userInput = JOptionPane.showInputDialog("Enter a name");
-        String base = userInput;
+        String alphabetical = userInput;
         
+        //test
         for(int i = 0; i<4; i++){
-             userInput = JOptionPane.showInputDialog("Enter a name");
-             //int compareInt = userInput.compareTo();
-           
+            //process
+            int compareInt = userInput.compareTo(alphabetical);
+            
+            if(compareInt < 0){
+                System.out.println(userInput + " is more alphabetical");
+            }
+            
+            //change
+            userInput = JOptionPane.showInputDialog("Enter a name");
         }
+        
+        
+            
     }
     
 }
