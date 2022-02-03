@@ -15,7 +15,7 @@ public class FlipCase {
         
         String userInput = JOptionPane.showInputDialog("Enter a string");
         
-        String
+        
     }
     
 }

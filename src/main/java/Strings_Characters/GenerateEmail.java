@@ -4,6 +4,8 @@
  */
 package Strings_Characters;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Naritaa
@@ -11,7 +13,17 @@ package Strings_Characters;
 public class GenerateEmail {
     public static void main(String[] args) {
         
-        String user
+        String userName = JOptionPane.showInputDialog("Enter your full name");
+        
+        //getting index of space
+        int firstSpace = userName.indexOf(" ");
+        //index of the place after the space
+        int lastSpace = userName.lastIndexOf(" ") + 1;
+        
+        String firstName = userName.substring(0,firstSpace);
+        String lastName =  userName.substring(lastSpace );
+        
+        System.out.println(firstName.toLowerCase() + "." + lastName.toLowerCase() + "@reddam.house");
     }
     
 }
