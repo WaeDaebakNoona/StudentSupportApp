@@ -4,19 +4,14 @@
  */
 package Scanners;
 
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Naritaa
  */
-public class ScanSent {
+public class ReadNames {
     public static void main(String[] args) {
         
-        String userInput = JOptionPane.showInputDialog("Enetr a sentence");
-        Scanner sc = new Scanner(userInput);
-        
+        String fileName = "";
     }
     
 }
