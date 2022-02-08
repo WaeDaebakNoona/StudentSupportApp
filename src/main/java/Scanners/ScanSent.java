@@ -14,8 +14,9 @@ import javax.swing.JOptionPane;
 public class ScanSent {
     public static void main(String[] args) {
         
-        String userInput = JOptionPane.showInputDialog("Enetr a sentence");
+        String userInput = JOptionPane.showInputDialog("Enter a sentence");
         Scanner sc = new Scanner(userInput);
+        //int numOfWords
         
     }
     

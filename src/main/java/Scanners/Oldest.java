@@ -17,18 +17,27 @@ public class Oldest {
        
         String userInput = JOptionPane.showInputDialog("input boys' names and ages");
         
-        Scanner sc = new Scanner(userInput);
+        
+        
+       
+        String currName = "";
         String oldestName = "";
         int oldestAge = 0;
         
-        int intAge = sc.nextInt();
         
         while(!userInput.equals("stop")){
+            Scanner sc = new Scanner(userInput);
+           currName = sc.next();
+            int boyAge = sc.nextInt();
+            if(boyAge > oldestAge){
+                oldestAge = boyAge;
+                oldestName = currName;
+            }
             
-           
+         
             userInput = JOptionPane.showInputDialog("input boys' names and ages");
             
-        }
+        }System.out.println("Oldest Name: " + oldestName + "Oldest number: " + oldestAge);
     }
     
 }

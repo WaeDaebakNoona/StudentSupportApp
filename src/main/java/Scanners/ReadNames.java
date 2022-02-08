@@ -4,6 +4,12 @@
  */
 package Scanners;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Naritaa
@@ -11,7 +17,20 @@ package Scanners;
 public class ReadNames {
     public static void main(String[] args) {
         
-        String fileName = "";
+        try {
+            String fileName = "data//Names.txt ";
+            File f = new File(fileName);
+            Scanner sc = new Scanner(f);
+            
+            String name;
+            
+            while(sc.hasNext()){
+                name = sc.nextLine();    
+                System.out.println(name);
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ReadNames.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
 }

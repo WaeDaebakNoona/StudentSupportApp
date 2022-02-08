@@ -24,7 +24,7 @@ public class Details {
         double height = sc.nextDouble();
         boolean smoke = sc.nextBoolean();
         System.out.println("NAME: " + name + "\nID: " + id + "\nHEIGHT: " + height + "\nSMOKE: " + smoke);
-        
+         
         //while(sc.hasNext()){
         //    String answers = sc.next();
          //   System.out.println(answers);
