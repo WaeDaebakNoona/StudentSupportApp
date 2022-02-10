@@ -14,28 +14,29 @@ import java.util.logging.Logger;
  *
  * @author Naritaa
  */
-public class ReadNames {
+public class getOldestAge {
     public static void main(String[] args) {
         
         try {
-            String fileName = "data//Names.txt ";
+            String fileName = "data//ages.txt ";
             File f = new File(fileName);
             Scanner sc = new Scanner(f);
             
-            String name = "";
-            String moreAlphaName = "";
             
-            while(sc.hasNext()){  
-                name = sc.nextLine(); 
-                if(name.compareTo(moreAlphaName) < 0){
-                   moreAlphaName = name;  
-                } 
-               
+            int oldestAge = 0;
+            
+            while(sc.hasNext()){
+                int age = sc.nextInt();
+                
+                if(age > oldestAge){
+                    oldestAge = age;
+                }      
             }
-            System.out.println("more alphabetical: " + name);
+            System.out.println("oldest age: " + oldestAge);
             sc.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ReadNames.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }

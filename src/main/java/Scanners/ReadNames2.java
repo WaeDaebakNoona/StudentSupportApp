@@ -14,28 +14,28 @@ import java.util.logging.Logger;
  *
  * @author Naritaa
  */
-public class ReadNames {
+public class ReadNames2 {
     public static void main(String[] args) {
-        
+       
         try {
-            String fileName = "data//Names.txt ";
+            String fileName = "data//Names.txt";
             File f = new File(fileName);
             Scanner sc = new Scanner(f);
             
-            String name = "";
-            String moreAlphaName = "";
-            
-            while(sc.hasNext()){  
-                name = sc.nextLine(); 
-                if(name.compareTo(moreAlphaName) < 0){
-                   moreAlphaName = name;  
-                } 
-               
+            while(sc.hasNext()){
+                String name = sc.next();
+                char first = name.charAt(0);
+                int lastInt = name.lastIndexOf(" ");
+                char last =name.charAt(lastInt);
+                System.out.println( first + last + "");
             }
-            System.out.println("more alphabetical: " + name);
-            sc.close();
+            
+            
+            
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ReadNames.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadNames2.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
+    
 }
