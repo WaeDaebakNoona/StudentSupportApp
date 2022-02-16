@@ -14,7 +14,7 @@ public class ConvertChars {
     public static void main(String[] args) {
         int value;
         char up;
-        Char userInput = JOptionPane.showInputDialog("enter a character").charAt(0);
+        char userInput = JOptionPane.showInputDialog("enter a character").charAt(0);
         
         while(Character.isLetterOrDigit(userInput)){
             userInput = JOptionPane.showInputDialog("enter a character").charAt(0);

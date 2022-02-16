@@ -24,7 +24,9 @@ public class Scannerdelimeters {
             
             
             while(fileSc.hasNext()){
+                
                 //scans/picks line individualy
+                
                 String line = fileSc.nextLine();
                 Scanner lineSc = new Scanner(line).useDelimiter("#");
                 
@@ -35,7 +37,9 @@ public class Scannerdelimeters {
                 String sportPos = lineSc.next();
                 
                 //processing
-                System.out.println(firstName + lName + age + sport + sportPos );
+                
+                System.out.println(firstName + " " + lName+ " " + age+ " " + sport + " " + sportPos );
+                
             }
             fileSc.close();
         } catch (FileNotFoundException ex) {
