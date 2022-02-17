@@ -37,7 +37,7 @@ public class Scannerdelimeters {
                 String sportPos = lineSc.next();
                 
                 //processing
-                
+                //
                 System.out.println(firstName + " " + lName+ " " + age+ " " + sport + " " + sportPos );
                 
             }
