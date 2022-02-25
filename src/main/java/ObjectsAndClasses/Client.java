@@ -28,5 +28,32 @@ public class Client {
     public String getName(){
         return clientName;
     }
+    public void setAccount(String accountInput){
+        accountNumber = accountInput;
+    }
+    public String getAccount(){
+        return accountNumber;
+    }
+    public void setBalance(double balanceInput){
+        balance = balanceInput;
+    }
+    public double getBalance(){
+        return balance;
+    }
     
+    public String changName(){
+        
+        String name = getName();
+        int firstSpace = name.indexOf(" ");
+        int lastSpace = name.lastIndexOf(" ") + 1;
+        char firstIntitial = name.charAt(0);
+        char lastInitial = name.charAt(lastSpace);
+        String firstName = name.substring(lastSpace);
+        String lastName = name.substring(0,firstSpace);
+        String changedname = "" + lastName + firstName + firstIntitial + lastInitial;
+        return changedname;
+    }
+    public String toString(){
+        return changName();
+    }
 }
