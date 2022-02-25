@@ -14,6 +14,7 @@ public class ClientUI {
     public static void main(String[] args) {
         
         Client c = new Client("rita" ,"162534" , 1234.9);
+
         String clientName = c.getName();
         String clientAccount = c.getAccount();
         double clientBalance = c.getBalance();
