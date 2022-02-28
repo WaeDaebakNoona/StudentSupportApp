@@ -47,13 +47,12 @@ public class Client {
         int firstSpace = name.indexOf(" ");
         int lastSpace = name.lastIndexOf(" ") + 1;
         char firstIntitial = name.charAt(0);
-        char lastInitial = name.charAt(lastSpace);
-        String firstName = name.substring(lastSpace);
-        String lastName = name.substring(0,firstSpace);
-        String changedname = "" + lastName + firstName + firstIntitial + lastInitial;
+        String lastName = name.substring(lastSpace);
+
+        String changedname = lastName +"," + firstIntitial;
         return changedname;
     }
     public String toString(){
-        return changName();
+        return changName() + ", Balance: " + balance + ", Account: " + accountNumber;
     }
 }
