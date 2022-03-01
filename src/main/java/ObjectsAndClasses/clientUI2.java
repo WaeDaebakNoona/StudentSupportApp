@@ -17,7 +17,8 @@ public class clientUI2 extends javax.swing.JFrame {
     
     String clientName = "";
     String clientAccount = "";
-    double clientBalance ;
+    double clientBalanceDb;
+    String clientBalanceStr = "";
     /**
      * Creates new form clientUI2
      */
@@ -42,7 +43,8 @@ public class clientUI2 extends javax.swing.JFrame {
         nameInput = new javax.swing.JTextField();
         okBut = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textOut = new javax.swing.JTextArea();
+        showTextButt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,9 +79,16 @@ public class clientUI2 extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textOut.setColumns(20);
+        textOut.setRows(5);
+        jScrollPane1.setViewportView(textOut);
+
+        showTextButt.setText("ShOw");
+        showTextButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showTextButtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +112,11 @@ public class clientUI2 extends javax.swing.JFrame {
                                 .addComponent(accountInput, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                                 .addComponent(nameInput)
                                 .addComponent(balanceInput)))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(showTextButt)
+                .addGap(179, 179, 179))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +135,11 @@ public class clientUI2 extends javax.swing.JFrame {
                     .addComponent(balanceInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(okBut)
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showTextButt)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,26 +147,37 @@ public class clientUI2 extends javax.swing.JFrame {
 
     private void nameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputActionPerformed
         // TODO add your handling code here:
-        clientName = c.getName();
+        clientName = nameInput.getText();
     }//GEN-LAST:event_nameInputActionPerformed
 
     private void accountInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountInputActionPerformed
         // TODO add your handling code here:
-        clientAccount = c.getAccount();
+        clientAccount = accountInput.getText();
     }//GEN-LAST:event_accountInputActionPerformed
 
     private void balanceInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceInputActionPerformed
         // TODO add your handling code here:
-        clientBalance = c.getBalance();
+        
+       clientBalanceStr = balanceInput.getText();
+       clientBalanceDb = Double.parseDouble(clientBalanceStr);
     }//GEN-LAST:event_balanceInputActionPerformed
 
     private void okButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButActionPerformed
         // TODO add your handling code here:
         if(clientAccount.length() == 6 && clientAccount.charAt(0) !=0){
-            
+//            if(clientAccount.length()){
+//            }
         }
         
     }//GEN-LAST:event_okButActionPerformed
+
+    private void showTextButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextButtActionPerformed
+        // TODO add your handling code here:
+        textOut.setText(clientName);
+        textOut.setText(clientAccount);
+        textOut.setText(clientBalanceStr);
+        
+    }//GEN-LAST:event_showTextButtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,9 +222,10 @@ public class clientUI2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nameInput;
     private javax.swing.JLabel nameVar;
     private javax.swing.JButton okBut;
+    private javax.swing.JButton showTextButt;
+    private javax.swing.JTextArea textOut;
     // End of variables declaration//GEN-END:variables
 }
