@@ -21,7 +21,7 @@ public class UserName {
         switch(choiceInt){
                 case 1:
                         char FN = firstName.charAt(0);
-                        char LN = charAt(lastName);
+                        char LN = lastName.charAt(0);
                         System.out.println("Initials: "+ FN + LN);
                         break;
                case 2: 

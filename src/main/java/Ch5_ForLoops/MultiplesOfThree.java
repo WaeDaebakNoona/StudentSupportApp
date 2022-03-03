@@ -27,9 +27,9 @@
       //challenge 3
       //print out even numbers of letters of the alphabet
       
-      for(char a =(char)97 ; a<=(char)122; a = a+2 ){
-      }
-      System.out.print(a);
+//      for(char a =(char)97 ; a<=(char)122; a = a+2 ){
+//      }
+//      System.out.print(a);
 
       
 
