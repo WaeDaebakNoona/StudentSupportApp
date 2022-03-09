@@ -15,17 +15,13 @@ public class clientUI2 extends javax.swing.JFrame {
     
     
     
-    String clientName = "";
-    String clientAccount = "";
-    double clientBalanceDb;
-    String clientBalanceStr = "";
     /**
      * Creates new form clientUI2
      */
     public clientUI2() {
         initComponents();
     }
-    Client c = new Client("rita" ,"162534" , 1234.9);
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,35 +143,32 @@ public class clientUI2 extends javax.swing.JFrame {
 
     private void nameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputActionPerformed
         // TODO add your handling code here:
-        clientName = nameInput.getText();
     }//GEN-LAST:event_nameInputActionPerformed
 
     private void accountInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountInputActionPerformed
         // TODO add your handling code here:
-        clientAccount = accountInput.getText();
     }//GEN-LAST:event_accountInputActionPerformed
 
     private void balanceInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balanceInputActionPerformed
         // TODO add your handling code here:
         
-       clientBalanceStr = balanceInput.getText();
-       clientBalanceDb = Double.parseDouble(clientBalanceStr);
     }//GEN-LAST:event_balanceInputActionPerformed
 
     private void okButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButActionPerformed
-        // TODO add your handling code here:
-        if(clientAccount.length() == 6 && clientAccount.charAt(0) !=0){
-//            if(clientAccount.length()){
-//            }
-        }
-        
+      String name = nameInput.getText();
+      String account = accountInput.getText();
+      String balance = balanceInput.getText();
+      Client c = new Client(name, account, NORMAL);
+      //String clientName = c.setName(name);
+      
+      
     }//GEN-LAST:event_okButActionPerformed
 
     private void showTextButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextButtActionPerformed
         // TODO add your handling code here:
-        textOut.setText(clientName);
-        textOut.setText(clientAccount);
-        textOut.setText(clientBalanceStr);
+//        textOut.setText(name);
+//        textOut.setText(account);
+//        textOut.setText(balance);
         
     }//GEN-LAST:event_showTextButtActionPerformed
 
