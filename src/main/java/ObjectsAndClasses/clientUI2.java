@@ -11,14 +11,16 @@ package ObjectsAndClasses;
 public class clientUI2 extends javax.swing.JFrame {
 
     
-    
-    
+    Client [] arr;
+    int size = 0;
     
     
     /**
      * Creates new form clientUI2
      */
     public clientUI2() {
+        arr = new Client[100]; 
+        
         initComponents();
     }
    
@@ -158,17 +160,41 @@ public class clientUI2 extends javax.swing.JFrame {
       String name = nameInput.getText();
       String account = accountInput.getText();
       String balance = balanceInput.getText();
-      Client c = new Client(name, account, NORMAL);
-      //String clientName = c.setName(name);
+      
+      
+      
+      if(account.length() == 6 && name.length() > 10){
+          Client client1 = new Client(name, account, Double.parseDouble(balance));
+      
+      arr[size] = client1;
+      size++;
+      
+      nameInput.setText("");
+      accountInput.setText("");
+      balanceInput.setText("");
+      
+      textOut.setText("Successfully added!");
+      }
+      else{
+      textOut.setText("Incorrect input!");
+          
+      }
+      
+      
+      
+      
       
       
     }//GEN-LAST:event_okButActionPerformed
 
     private void showTextButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextButtActionPerformed
-        // TODO add your handling code here:
-//        textOut.setText(name);
-//        textOut.setText(account);
-//        textOut.setText(balance);
+        String out = "";
+        for(int i = 0; i < size; i++){
+            out+=arr[i].toString() + "\n";
+            
+        }
+        
+        textOut.setText(out);
         
     }//GEN-LAST:event_showTextButtActionPerformed
 

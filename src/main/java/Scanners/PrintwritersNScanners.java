@@ -25,6 +25,7 @@ public class PrintwritersNScanners {
         String input = JOptionPane.showInputDialog("Enter a string; STOP to exit");
         
         while(!input.equals("STOP")){
+            
             printW.println(input);
             input = JOptionPane.showInputDialog("Enter a string; STOP to exit");
         }
