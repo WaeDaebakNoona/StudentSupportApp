@@ -26,16 +26,18 @@ public class StoreLoginDetails {
             
             String name = JOptionPane.showInputDialog("Enter username");
             String password = JOptionPane.showInputDialog("Enter password");
-            
+            int count = 0;
             while(!name.equals("STOP")){
                 PrintWriter pw = new PrintWriter(file);
                 pw.println(name + "#" + password);
                 name = JOptionPane.showInputDialog("Enter username");
                 password = JOptionPane.showInputDialog("Enter password");
+                count++;
             }
-            
+            System.out.println(count);
         } catch (IOException ex) {
             Logger.getLogger(StoreLoginDetails.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERROR");
         } finally {
             try {
                 file.close();

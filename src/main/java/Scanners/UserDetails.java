@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 //done
 public class UserDetails {
     public static void main(String[] args) {
-        String userInput = JOptionPane.showInputDialog("Enter name, surname and age");
+        String userInput = JOptionPane.showInputDialog("Enter name, surname and age. (spaces in between)");
         
         Scanner sc = new Scanner(userInput);
        

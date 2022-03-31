@@ -28,12 +28,16 @@ public class ExtractDomain {
             while(fileScan.hasNext()){
                 String line = fileScan.nextLine();
                 Scanner lineSc = new Scanner(line);
+                String token = lineSc.next();
                 String domain = lineSc.next();
                 count++;
                 System.out.println("Domain " + count + ": "+ domain);
-                
+               
             }
+            
             System.out.println("Websites processed: " + count);
+            fileScan.close();
+           
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ExtractDomain.class.getName()).log(Level.SEVERE, null, ex);
         }
