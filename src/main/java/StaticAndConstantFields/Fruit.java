@@ -17,7 +17,7 @@ public class Fruit {
     public final int markup = 75;
     private int totalQty;
     private double totalCost;
-    private double totalSales;
+    private static double totalSales;
     
     public Fruit(String d, int q, double c){
         description = d;
@@ -46,7 +46,7 @@ public class Fruit {
     public double getTotalCost(){
         return totalCost;
     }
-    public double getTotalSales(){
+    public static double getTotalSales(){
         return totalSales;
     }
     public void sell(int q){
