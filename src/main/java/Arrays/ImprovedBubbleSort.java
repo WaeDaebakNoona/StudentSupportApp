@@ -8,14 +8,10 @@ package Arrays;
  *
  * @author Naritaa
  */
-public class SelectSorta {
-    public static void main(String[] args) {
+public class ImprovedBubbleSort {
+    public static void main(String[] args){
+        int[] arr = {4,2,8,5,10,3};
         
-        int [] arr = {2,4,7,1,9,3,6,5,8};
-        
-        for(int sortedIndex = arr.length;sortedIndex>0;sortedIndex--){
-            
-        }
     }
     
 }
