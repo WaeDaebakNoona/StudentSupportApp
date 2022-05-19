@@ -46,7 +46,9 @@ public class PersonArray {
                 for(int currentIndex = 0;sortedIndex<currentIndex;currentIndex++){
                     if(pArr[currentIndex].getAge() > pArr[sortedIndex].getAge()){
                         int temp = pArr[currentIndex].getAge();
-                        pArr[currentIndex].getAge() = pArr[sortedIndex].getAge();
+                        pArr[currentIndex] = pArr[sortedIndex];
+                        //pArr[sortedIndex] = temp;
+                        
                     }
                     
                 }
