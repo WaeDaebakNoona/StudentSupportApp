@@ -9,5 +9,5 @@ package ExamPracticePrac;
  * @author Naritaa
  */
 public class CardArray {
-   Private Card[] cArr = new Card[20];
+   //Private Card[] cArr = new Card[20];
 }
