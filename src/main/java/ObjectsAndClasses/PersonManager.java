@@ -42,17 +42,41 @@ public class PersonManager {
         return output;
     }
     
-    public String nameSort(){
-        //insertion sort
-        int size = 0;
-       
-        return "";
+    public void nameSort(){
+        //selection sort
+
+        for(int i = 0; i < size - 1;i++){
+            for(int j = i + 1; j<size;j++){
+                
+                if(people[i].getName().compareTo(people[j].getName()) > 0){
+                Person temp = people[i];
+                people[i] = people[j];
+                people[j] = temp;
+                
+                }
+            }
+            
+        } 
         
     }
-    public int ageSort(){
-        return 0;
+    public void ageSort(){
+        //bubble sort
+        for(int i = size-1; i>0; i--){
+            for(int j = 0; j<i; j++){
+                if(people[j].getAge() > people[j+1].getAge() ){
+                    Person temp = people[j];
+                    people[j] = people[j+1];
+                    people[j+1] = temp;
+                    
+                    
+                }
+            }
+        }
+        
+        
     }
-    
+    //binary search (search name and return an index)
+    //add and delete
     
     
 }
