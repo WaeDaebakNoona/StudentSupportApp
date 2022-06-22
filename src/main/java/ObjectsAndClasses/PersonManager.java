@@ -77,6 +77,27 @@ public class PersonManager {
     }
     //binary search (search name and return an index)
     //add and delete
-    
+    public int binarySearch(String str){
+        //user inserts name, return index
+        int start = 0;
+        int end = size -1;
+        
+        while(start<= end){
+            int mid = (start+end)/2;
+            
+            if(people[mid].getName().equalsIgnoreCase(str)){
+                return mid;
+            }
+            else if(people[mid].getName().compareToIgnoreCase(str)> 0){
+                start = mid + 1;
+            }
+            else{
+                end = mid - 1;
+            }
+            
+            
+        }
+        return - 1;
+    }
     
 }

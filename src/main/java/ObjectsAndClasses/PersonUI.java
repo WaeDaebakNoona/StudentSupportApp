@@ -4,6 +4,10 @@
  */
 package ObjectsAndClasses;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Naritaa
@@ -15,6 +19,12 @@ public class PersonUI extends javax.swing.JFrame {
      */
     public PersonUI() {
         initComponents();
+        
+        String name = nameInput.getText();
+        String surname = surnameInput.getText();
+        String strAge = ageInput.getText();
+        int age = Integer.parseInt(strAge);
+        
     }
 
     /**
@@ -37,7 +47,7 @@ public class PersonUI extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         addButt = new javax.swing.JButton();
         delButt = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        agesortButt = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         deleteInput = new javax.swing.JTextField();
 
@@ -49,6 +59,16 @@ public class PersonUI extends javax.swing.JFrame {
 
         jLabel3.setText("Age:");
 
+        nameInput.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                nameInputAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -57,7 +77,12 @@ public class PersonUI extends javax.swing.JFrame {
 
         delButt.setText("DELETE");
 
-        jButton1.setText("AGE SORT");
+        agesortButt.setText("AGE SORT");
+        agesortButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agesortButtActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("NAME SORT");
 
@@ -87,7 +112,7 @@ public class PersonUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(deleteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(agesortButt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -120,7 +145,7 @@ public class PersonUI extends javax.swing.JFrame {
                         .addComponent(addButt)
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(agesortButt)
                             .addComponent(jButton2))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -142,6 +167,21 @@ public class PersonUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nameInputAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_nameInputAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameInputAncestorAdded
+
+    private void agesortButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agesortButtActionPerformed
+        try {
+            // TODO add your handling code here:
+            PersonManager pm = new PersonManager();
+            pm.ageSort();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PersonUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_agesortButtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,7 +209,12 @@ public class PersonUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PersonUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+          
+                
+                
+                
+                
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -181,9 +226,9 @@ public class PersonUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButt;
     private javax.swing.JTextField ageInput;
+    private javax.swing.JButton agesortButt;
     private javax.swing.JButton delButt;
     private javax.swing.JTextField deleteInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

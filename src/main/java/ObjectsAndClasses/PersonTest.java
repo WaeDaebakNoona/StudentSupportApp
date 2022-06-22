@@ -18,6 +18,7 @@ public class PersonTest {
         PersonManager pm = new PersonManager();
         pm.nameSort();
         pm.ageSort();
+        pm.binarySearch("steve");
         System.out.println(pm.toString());
     }
     
