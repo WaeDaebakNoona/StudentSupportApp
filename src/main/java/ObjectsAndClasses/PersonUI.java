@@ -20,11 +20,7 @@ public class PersonUI extends javax.swing.JFrame {
     public PersonUI() {
         initComponents();
         
-        String name = nameInput.getText();
-        String surname = surnameInput.getText();
-        String strAge = ageInput.getText();
-        int age = Integer.parseInt(strAge);
-        
+       
     }
 
     /**
@@ -44,12 +40,11 @@ public class PersonUI extends javax.swing.JFrame {
         surnameInput = new javax.swing.JTextField();
         ageInput = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        displayOut = new javax.swing.JTextArea();
         addButt = new javax.swing.JButton();
         delButt = new javax.swing.JButton();
         agesortButt = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        deleteInput = new javax.swing.JTextField();
+        nameSortButt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,11 +64,16 @@ public class PersonUI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        displayOut.setColumns(20);
+        displayOut.setRows(5);
+        jScrollPane1.setViewportView(displayOut);
 
         addButt.setText("ADD");
+        addButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtActionPerformed(evt);
+            }
+        });
 
         delButt.setText("DELETE");
 
@@ -84,7 +84,12 @@ public class PersonUI extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("NAME SORT");
+        nameSortButt.setText("NAME SORT");
+        nameSortButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameSortButtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,31 +99,28 @@ public class PersonUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(34, 34, 34)
-                                .addComponent(nameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(surnameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(addButt))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(addButt)
+                        .addGap(0, 120, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(agesortButt))
+                        .addComponent(agesortButt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nameSortButt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(delButt)
-                                .addGap(11, 11, 11)))))
+                                .addGap(11, 11, 11))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)
+                        .addComponent(nameInput))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(surnameInput)
+                            .addComponent(ageInput))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -146,11 +148,9 @@ public class PersonUI extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(agesortButt)
-                            .addComponent(jButton2))
+                            .addComponent(nameSortButt))
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(delButt)
-                            .addComponent(deleteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(delButt)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -176,12 +176,39 @@ public class PersonUI extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             PersonManager pm = new PersonManager();
+            
+            
             pm.ageSort();
+            displayOut.setText(t);
+            
+            
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PersonUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_agesortButtActionPerformed
+
+    private void addButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtActionPerformed
+        // TODO add your handling code here:
+        String name = nameInput.getText();
+        String surname = surnameInput.getText();
+        String strAge = ageInput.getText();
+        int age = Integer.parseInt(strAge);
+        Person p = new Person(name,surname, age);
+        
+        //PersonManager pm = new PersonManager();
+        
+        
+        
+    }//GEN-LAST:event_addButtActionPerformed
+
+    private void nameSortButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSortButtActionPerformed
+        // TODO add your handling code here:
+        PersonManager pm = new PersonManager();
+        pm.nameSort();
+        displayOut.setText(t);
+        //helpppppp
+    }//GEN-LAST:event_nameSortButtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,15 +255,14 @@ public class PersonUI extends javax.swing.JFrame {
     private javax.swing.JTextField ageInput;
     private javax.swing.JButton agesortButt;
     private javax.swing.JButton delButt;
-    private javax.swing.JTextField deleteInput;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextArea displayOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nameInput;
+    private javax.swing.JButton nameSortButt;
     private javax.swing.JTextField surnameInput;
     // End of variables declaration//GEN-END:variables
 }

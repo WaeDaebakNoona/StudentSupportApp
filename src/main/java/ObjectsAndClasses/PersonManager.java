@@ -6,7 +6,12 @@ package ObjectsAndClasses;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -66,13 +71,31 @@ public class PersonManager {
                 if(people[j].getAge() > people[j+1].getAge() ){
                     Person temp = people[j];
                     people[j] = people[j+1];
-                    people[j+1] = temp;
-                    
+                    people[j+1] = temp;     
                     
                 }
             }
         }
         
+        
+        
+    }
+    public void add(){
+        FileWriter fw = null;
+        try {
+            String file = "data\\People.txt";
+            fw = new FileWriter(file);
+            
+            fw.write(file);
+        } catch (IOException ex) {
+            Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
     }
     //binary search (search name and return an index)
