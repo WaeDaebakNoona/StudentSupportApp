@@ -190,7 +190,7 @@ public class PersonUI extends javax.swing.JFrame {
             String strAge = ageInput.getText();
             int age = Integer.parseInt(strAge);
             
-            pm.add(name,surname, age);
+            pm.add(name, surname, age);
             
             displayOut.setText(pm.toString());
         
