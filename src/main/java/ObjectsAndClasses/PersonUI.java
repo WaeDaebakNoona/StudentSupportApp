@@ -14,13 +14,18 @@ import java.util.logging.Logger;
  */
 public class PersonUI extends javax.swing.JFrame {
 
+    private PersonManager pm;
     /**
      * Creates new form PersonUI
      */
     public PersonUI() {
         initComponents();
-        
-       
+        setLocationRelativeTo(null);
+        try {
+            pm = new PersonManager();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PersonUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -173,30 +178,21 @@ public class PersonUI extends javax.swing.JFrame {
     }//GEN-LAST:event_nameInputAncestorAdded
 //githubbbb
     private void agesortButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agesortButtActionPerformed
-        try {
             // TODO add your handling code here:
-            PersonManager pm = new PersonManager();
-            
-            
             pm.ageSort();
-            displayOut.setText(t);
-            
-            
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PersonUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            displayOut.setText(pm.toString());
     }//GEN-LAST:event_agesortButtActionPerformed
 
     private void addButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtActionPerformed
-        // TODO add your handling code here:
-        String name = nameInput.getText();
-        String surname = surnameInput.getText();
-        String strAge = ageInput.getText();
-        int age = Integer.parseInt(strAge);
-        Person p = new Person(name,surname, age);
-        
-        //PersonManager pm = new PersonManager();
+            // TODO add your handling code here:
+            String name = nameInput.getText();
+            String surname = surnameInput.getText();
+            String strAge = ageInput.getText();
+            int age = Integer.parseInt(strAge);
+            
+            pm.add(name,surname, age);
+            
+            displayOut.setText(pm.toString());
         
         
         
@@ -204,9 +200,9 @@ public class PersonUI extends javax.swing.JFrame {
 
     private void nameSortButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSortButtActionPerformed
         // TODO add your handling code here:
-        PersonManager pm = new PersonManager();
+        
         pm.nameSort();
-        displayOut.setText(t);
+        displayOut.setText(pm.toString());
         //helpppppp
     }//GEN-LAST:event_nameSortButtActionPerformed
 

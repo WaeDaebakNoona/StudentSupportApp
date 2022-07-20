@@ -51,9 +51,10 @@ public class PersonManager {
         //selection sort
 
         for(int i = 0; i < size - 1;i++){
+            
             for(int j = i + 1; j<size;j++){
                 
-                if(people[i].getName().compareTo(people[j].getName()) > 0){
+                if(people[i].getName().compareTo(people[j].getName()) < 0){
                 Person temp = people[i];
                 people[i] = people[j];
                 people[j] = temp;
@@ -80,13 +81,13 @@ public class PersonManager {
         
         
     }
-    public void add(){
+    public void add(String n, String su, int a){
         FileWriter fw = null;
         try {
             String file = "data\\People.txt";
-            fw = new FileWriter(file);
-            
-            fw.write(file);
+            fw = new FileWriter(file,true);
+            fw.append(n + "#" + su + "#" + a);
+           
         } catch (IOException ex) {
             Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
