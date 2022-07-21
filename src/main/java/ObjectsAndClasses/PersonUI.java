@@ -50,6 +50,7 @@ public class PersonUI extends javax.swing.JFrame {
         delButt = new javax.swing.JButton();
         agesortButt = new javax.swing.JButton();
         nameSortButt = new javax.swing.JButton();
+        deleteInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,10 +105,10 @@ public class PersonUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(addButt)
-                        .addGap(0, 120, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(agesortButt)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(agesortButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addButt)
+                            .addComponent(deleteInput))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameSortButt, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,14 +149,16 @@ public class PersonUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                        .addGap(27, 27, 27)
                         .addComponent(addButt)
-                        .addGap(30, 30, 30)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(agesortButt)
                             .addComponent(nameSortButt))
                         .addGap(29, 29, 29)
-                        .addComponent(delButt)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(delButt)
+                            .addComponent(deleteInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -176,7 +179,7 @@ public class PersonUI extends javax.swing.JFrame {
     private void nameInputAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_nameInputAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_nameInputAncestorAdded
-//githubbbb
+
     private void agesortButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agesortButtActionPerformed
             // TODO add your handling code here:
             pm.ageSort();
@@ -185,14 +188,15 @@ public class PersonUI extends javax.swing.JFrame {
 
     private void addButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtActionPerformed
             // TODO add your handling code here:
+            
             String name = nameInput.getText();
             String surname = surnameInput.getText();
             String strAge = ageInput.getText();
             int age = Integer.parseInt(strAge);
             
-            pm.add(name, surname, age);
-            
+            pm.add(new Person(name,surname,age)); 
             displayOut.setText(pm.toString());
+            
         
         
         
@@ -251,6 +255,7 @@ public class PersonUI extends javax.swing.JFrame {
     private javax.swing.JTextField ageInput;
     private javax.swing.JButton agesortButt;
     private javax.swing.JButton delButt;
+    private javax.swing.JTextField deleteInput;
     private javax.swing.JTextArea displayOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

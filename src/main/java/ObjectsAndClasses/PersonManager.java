@@ -81,24 +81,38 @@ public class PersonManager {
         
         
     }
-    public void add(String n, String su, int a){
-        FileWriter fw = null;
-        try {
-            String file = "data\\People.txt";
-            fw = new FileWriter(file,true);
-            fw.append(n + "#" + su + "#" + a);
-           
-        } catch (IOException ex) {
-            Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fw.close();
-            } catch (IOException ex) {
-                Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    public void add(Person p){
+        
+        int pos = 0;
+        while(people[pos].getName().compareTo(p.getName())<0){
+            pos++;
         }
+        shift(pos);
+        people[pos] = p;
+        
+//        FileWriter fw = null;
+//        try {
+//            String file = "data\\People.txt";
+//            fw = new FileWriter(file,true);
+//            fw.append(n + "#" + su + "#" + a);
+//           
+//        } catch (IOException ex) {
+//            Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            try {
+//                fw.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(PersonManager.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
         
     }
+    public void shift(int p){
+        for(int i = size; i >=p;i--){
+            people[i]= people[i-1];
+        }
+        size++;
+}
     //binary search (search name and return an index)
     //add and delete
     public int binarySearch(String str){
@@ -123,5 +137,6 @@ public class PersonManager {
         }
         return - 1;
     }
+    
     
 }
