@@ -7,6 +7,7 @@ package MVC;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,12 +26,22 @@ public class PopulateJcomponents extends javax.swing.JFrame {
         DefaultListModel lModel = new DefaultListModel();
         lModel.addAll(name);
         listItem.setModel(lModel);
+        
         //combobox
         DefaultComboBoxModel comModel = new DefaultComboBoxModel();
+        comModel.addAll(name);
         comboItem.setModel(comModel);
+        
         //tebel
-        //String []
+        String [] column = {"Name", "Age","Grade"};
+        String  [][] data = {{"Peter","53", "13"},{"John", "67", "5"},{"Paul", "98","8"}};
+        DefaultTableModel tb = new DefaultTableModel(data,column);
+        tabelItem.setModel(tb);
+        
+        //show info in corresponding label
+        
     }
+    
     
     public ArrayList<String>getListNames(){
         ArrayList<String> list = new ArrayList<>();
@@ -73,11 +84,21 @@ public class PopulateJcomponents extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listItem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listItemValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listItem);
 
         jLabel2.setText("Combo");
 
         comboItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboItem.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboItemItemStateChanged(evt);
+            }
+        });
         comboItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboItemActionPerformed(evt);
@@ -95,6 +116,11 @@ public class PopulateJcomponents extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelItemMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelItem);
 
         jLabel3.setText("Tabel");
@@ -128,8 +154,8 @@ public class PopulateJcomponents extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(224, 224, 224)
-                        .addComponent(comboItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(207, 207, 207)
+                        .addComponent(comboItem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,10 +175,11 @@ public class PopulateJcomponents extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -161,8 +188,8 @@ public class PopulateJcomponents extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(listLabel)))
-                    .addComponent(comboItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -181,6 +208,29 @@ public class PopulateJcomponents extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_comboItemActionPerformed
+
+    private void listItemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listItemValueChanged
+        // TODO add your handling code here:
+        String name = listItem.getSelectedValue();
+        listLabel.setText(name);
+        
+    }//GEN-LAST:event_listItemValueChanged
+
+    private void comboItemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboItemItemStateChanged
+        // TODO add your handling code here:
+        String name = (String)comboItem.getSelectedItem();
+        comboLabel.setText(name);
+    }//GEN-LAST:event_comboItemItemStateChanged
+
+    private void tabelItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelItemMouseClicked
+        // TODO add your handling code here:
+        int row = tabelItem.getSelectedRow();
+        String name = (String)tabelItem.getValueAt(row, 0);
+        String grade = (String)tabelItem.getValueAt(row, 1);
+        String age = (String)tabelItem.getValueAt(row, 2);
+        
+        tabelLabel.setText(name + " " +  grade + " "+ age);
+    }//GEN-LAST:event_tabelItemMouseClicked
 
     /**
      * @param args the command line arguments
