@@ -38,7 +38,7 @@ public class PopulateJcomponents extends javax.swing.JFrame {
         DefaultTableModel tb = new DefaultTableModel(data,column);
         tabelItem.setModel(tb);
         
-        //show info in corresponding label
+        //show info in corresponding label in events
         
     }
     
