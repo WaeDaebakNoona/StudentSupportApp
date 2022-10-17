@@ -32,8 +32,8 @@ public class AssistUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
+        boxButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -48,9 +48,19 @@ public class AssistUI extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        jButton1.setText("I Need Help");
+        helpButton.setText("I Need Help");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Anonymous Box");
+        boxButton.setText("Anonymous Box");
+        boxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("?");
 
@@ -76,7 +86,7 @@ public class AssistUI extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(187, 187, 187)
@@ -85,7 +95,7 @@ public class AssistUI extends javax.swing.JFrame {
                                         .addComponent(jLabel2)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(168, 168, 168)
-                                    .addComponent(jButton2))))
+                                    .addComponent(boxButton))))
                         .addGap(0, 158, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -104,11 +114,11 @@ public class AssistUI extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addComponent(jLabel2)
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(helpButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(31, 31, 31)
-                .addComponent(jButton2)
+                .addComponent(boxButton)
                 .addGap(77, 77, 77))
         );
 
@@ -131,6 +141,18 @@ public class AssistUI extends javax.swing.JFrame {
         dispose();
         new StudentLogInUI().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new HelpUI().setVisible(true);
+    }//GEN-LAST:event_helpButtonActionPerformed
+
+    private void boxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new AnonymousBoxUI().setVisible(true);
+    }//GEN-LAST:event_boxButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,8 +190,8 @@ public class AssistUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton boxButton;
+    private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
