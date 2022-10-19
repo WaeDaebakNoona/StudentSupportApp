@@ -17,6 +17,24 @@ public class DataManager {
 //		SystemManager.db.update(query);
 //	}
     //example
+    private DataHelp dt;
+    
+    public DataManager(){
+        //dt = new DataHelp(typeHelp, statement);
+    }
+    
+    public void addAnonymous(String type,String statement){
+        DB db = new DB();
+        String query = "Insert into Anonymoustbl Value(TypeOfHelp, UserStatement)" + "";
+        db.update(query);
+
+    }
+    public void addHelp(String type,String statement){
+        DB db = new DB();
+        String query = "Insert into Helptbl Value(TypeOfHelp, UserStatement)" + "";
+        db.update(query);
+
+    }
     
     
     
