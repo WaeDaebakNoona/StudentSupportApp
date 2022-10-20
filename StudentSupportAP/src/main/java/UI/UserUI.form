@@ -214,7 +214,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel21">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Age:"/>
+                    <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
@@ -442,6 +442,7 @@
                               <ComponentRef name="helpButtonGroup"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Time Management"/>
+                            <Property name="actionCommand" type="java.lang.String" value="timeManagement"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="jRadioButton2">

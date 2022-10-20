@@ -4,18 +4,21 @@
  */
 package UI;
 
+import Backend.MessageManager;
+
 /**
  *
  * @author Naritaa
  */
 public class UserUI extends javax.swing.JFrame {
-
+    private MessageManager mm;
     /**
      * Creates new form UserUI
      */
     public UserUI() {
         initComponents();
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -133,7 +136,7 @@ public class UserUI extends javax.swing.JFrame {
 
         jLabel20.setText("Surname:");
 
-        jLabel21.setText("Age:");
+        jLabel21.setText("Email");
 
         jLabel22.setText("Grade:");
 
@@ -250,6 +253,7 @@ public class UserUI extends javax.swing.JFrame {
 
         helpButtonGroup.add(jRadioButton1);
         jRadioButton1.setText("Time Management");
+        jRadioButton1.setActionCommand("timeManagement");
 
         helpButtonGroup.add(jRadioButton2);
         jRadioButton2.setText("Report Incindent");
@@ -710,6 +714,8 @@ public class UserUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         String input = messageInput.getText();
+        String type = helpButtonGroup.getSelection().getActionCommand();
+        mm.AddHelpStatement(type, input);
 
         //JOptionPane.showMessageDialog(null, "Succesfully recorded!");
     }//GEN-LAST:event_saveButtonActionPerformed
