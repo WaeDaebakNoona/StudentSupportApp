@@ -10,8 +10,11 @@ package Backend;
  * @author Narita
  */
 public class Message {
+    
     private String type;
     private String statement;
+//    private String name;
+//    private int grade;
 
     public Message(String type, String statement) {
         this.type = type;

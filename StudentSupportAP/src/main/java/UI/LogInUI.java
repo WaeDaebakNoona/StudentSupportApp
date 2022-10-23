@@ -4,22 +4,38 @@
  */
 package UI;
 
-import Backend.StudentManager;
+import Backend.StudentsManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Naritaa
  */
 public class LogInUI extends javax.swing.JFrame {
-    public StudentManager sm;
+    public StudentsManager sm;
     /**
      * Creates new form LogInUI
      */
     public LogInUI() {
-        initComponents();
+        setLocationRelativeTo(null);
         
+        initComponents();
+        ArrayList<String> name = getListNames();
+        DefaultComboBoxModel comModel = new DefaultComboBoxModel();
+        comModel.addAll(name);
+        logBox.setModel(comModel);
     }
-
+     public ArrayList<String>getListNames(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Student");
+        list.add("Administrator");
+       return list;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +49,7 @@ public class LogInUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        logBox = new javax.swing.JComboBox<>();
         usernameInput = new javax.swing.JTextField();
         passwordInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -61,7 +77,12 @@ public class LogInUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        logBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        logBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logBoxActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Password");
 
@@ -96,7 +117,7 @@ public class LogInUI extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(logBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel1))
@@ -113,7 +134,7 @@ public class LogInUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
@@ -153,8 +174,36 @@ public class LogInUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        boolean admin = (logBox.getSelectedItem() + "").equals("Administrator");
+        String userName = usernameInput.getText();
+        String passWord = passwordInput.getText();
+        //currently only admin works
+        sm = new StudentsManager();
+        boolean loginState = false;
+        try {
+            loginState = sm.checkUser(admin, userName, passWord);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(loginState){
+            dispose();
+            try {
+                new UserUI().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        
         
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void logBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,12 +242,12 @@ public class LogInUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> logBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JTextField passwordInput;
     private javax.swing.JTextField usernameInput;

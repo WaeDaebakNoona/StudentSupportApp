@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package backend;
+package Backend.Utillity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,11 +14,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Cliftonb
+ * @author Narita
  */
 public class DB {
-
-	private static final String driver = "com.mysql.cj.jdbc.Driver";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
 	private static final String url = "jdbc:mysql://102.130.115.69:3306/naritaaDB";
         //102.130.115.69 
         //localhost
@@ -73,4 +72,3 @@ public class DB {
 	}
 
 }
-
