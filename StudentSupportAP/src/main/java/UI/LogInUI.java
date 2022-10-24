@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,9 +22,11 @@ public class LogInUI extends javax.swing.JFrame {
      * Creates new form LogInUI
      */
     public LogInUI() {
+        initComponents();
         setLocationRelativeTo(null);
         
-        initComponents();
+        //from learning class
+        
         ArrayList<String> name = getListNames();
         DefaultComboBoxModel comModel = new DefaultComboBoxModel();
         comModel.addAll(name);
@@ -58,6 +61,7 @@ public class LogInUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(224, 224, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(330, 350));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -99,9 +103,9 @@ public class LogInUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(addButton)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(loginButton)
-                        .addGap(78, 78, 78))
+                        .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,19 +177,46 @@ public class LogInUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        
+        //check if administrator password and username is correct
+        //not sure why student isnt working
         boolean admin = (logBox.getSelectedItem() + "").equals("Administrator");
+        boolean student = (logBox.getSelectedItem() + "").equals("Student");
         String userName = usernameInput.getText();
         String passWord = passwordInput.getText();
-        //currently only admin works
+        
         sm = new StudentsManager();
-        boolean loginState = false;
+        boolean loginStateA = false;
+        boolean loginStateS = false;
+        
         try {
-            loginState = sm.checkUser(admin, userName, passWord);
+                loginStateA = sm.checkAdmin(admin, userName, passWord);
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        if( loginStateA){
+            dispose();
+            try {
+                new AdminUI().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        try {
+            loginStateS = sm.checkStudent(student, userName, passWord);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(loginState){
+        if(loginStateS){
             dispose();
             try {
                 new UserUI().setVisible(true);
@@ -194,11 +225,11 @@ public class LogInUI extends javax.swing.JFrame {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LogInUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         }
         
         
         
+        //endd
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void logBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logBoxActionPerformed

@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Backend.AdminManager;
 import Backend.Message;
 import Backend.MessageManager;
 import Backend.Students;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,38 +24,38 @@ import javax.swing.table.DefaultTableModel;
 public class UserUI extends javax.swing.JFrame {
     private MessageManager mm;
     private StudentsManager sm;
-    
+    private Students s;
+    private AdminManager am;
     /**
      * Creates new form UserUI
      */
     public UserUI() throws SQLException, ClassNotFoundException {
         initComponents();
         setLocationRelativeTo(null);
-         mm = new MessageManager();
-//        sm.usersInfo();
-//        nameField.setText(t);
-//        surnameFiel.setText(t);
-//        ageField.setText(t);
-//        gradeField.setText(t);
+        mm = new MessageManager();
+//        String h = sm.usersInfo();
+//        nameField.setText(h);
+//        surnameFiel.setText(h);
+//        ageField.setText(h);
+//        gradeField.setText(h);
         
-       ArrayList<String> alist = data();
-        
-        DefaultListModel model = new DefaultListModel();
-        model.addAll(alist);
-        listItem.setModel(model);
+//       ArrayList<String> alist = data();
+//        
+//        DefaultListModel model = new DefaultListModel();
+//        model.addAll(alist);
+//        listItem.setModel(model);
        
         
     }
-    public ArrayList<String>data() throws SQLException, ClassNotFoundException{
-        ArrayList list = new ArrayList();
-        
-        
-            list.add(mm.displayAnonStatement());
-            list.add(mm.displayHelpStatement());
-       
-        
-        return list;
-    }
+//    public ArrayList<String> data() throws SQLException, ClassNotFoundException {
+//        ArrayList list = new ArrayList();
+//        mm = new MessageManager();
+//
+//        list.add(mm.displayAnonStatement());
+//        list.add(mm.displayHelpStatement());
+//
+//        return list;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +74,6 @@ public class UserUI extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        cancelButton = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         nameField = new javax.swing.JTextField();
         surnameFiel = new javax.swing.JTextField();
@@ -82,6 +83,10 @@ public class UserUI extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         saveButt = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
@@ -118,33 +123,15 @@ public class UserUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         histbutt = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listItem = new javax.swing.JList<>();
-        testinng = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        textAdmin = new javax.swing.JTextArea();
+        adminHistButt = new javax.swing.JButton();
 
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,23 +145,32 @@ public class UserUI extends javax.swing.JFrame {
         jLabel7.setText("Please select the topic for");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(244, 244, 244));
 
+        jTabbedPane1.setBackground(new java.awt.Color(244, 244, 244));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "STUDENT SUPPORT APP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 0, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+
+        jPanel2.setBackground(new java.awt.Color(244, 244, 244));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setText("Change your profile. All information is confidential. Your data is safe.");
 
-        cancelButton.setText("Cancel");
-
+        jPanel10.setBackground(new java.awt.Color(229, 204, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Your Profile", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Georgia", 0, 18))); // NOI18N
 
         jLabel19.setText("Name:");
 
         jLabel20.setText("Surname:");
 
-        jLabel21.setText("Email");
+        jLabel21.setText("Age:");
 
         jLabel22.setText("Grade:");
+
+        jLabel26.setText("Username:");
+
+        jLabel27.setText("Password:");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -186,13 +182,17 @@ public class UserUI extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(jLabel19)
                     .addComponent(jLabel21)
-                    .addComponent(jLabel22))
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gradeField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(surnameFiel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(passwordField)
+                    .addComponent(gradeField, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(surnameFiel, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(ageField, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(usernameField))
                 .addGap(26, 26, 26))
         );
         jPanel10Layout.setVerticalGroup(
@@ -214,10 +214,25 @@ public class UserUI extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(gradeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        saveButt.setBackground(new java.awt.Color(229, 204, 255));
+        saveButt.setForeground(new java.awt.Color(0, 0, 0));
         saveButt.setText("Save");
+        saveButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -227,36 +242,33 @@ public class UserUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel23)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelButton)
-                .addGap(18, 18, 18)
-                .addComponent(saveButt)
-                .addGap(253, 253, 253))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(saveButt)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(161, 161, 161)
-                        .addComponent(jLabel23)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelButton)
-                            .addComponent(saveButt))
-                        .addGap(108, 108, 108))))
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(saveButt)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel23)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Profile", jPanel2);
 
+        jTabbedPane3.setBackground(new java.awt.Color(244, 244, 244));
+
+        jPanel1.setBackground(new java.awt.Color(244, 244, 244));
         jPanel1.setPreferredSize(new java.awt.Dimension(450, 450));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
@@ -269,6 +281,8 @@ public class UserUI extends javax.swing.JFrame {
         messageInput.setPreferredSize(new java.awt.Dimension(399, 90));
         jScrollPane1.setViewportView(messageInput);
 
+        saveButton.setBackground(new java.awt.Color(229, 204, 255));
+        saveButton.setForeground(new java.awt.Color(0, 0, 0));
         saveButton.setText("Save");
         saveButton.setPreferredSize(new java.awt.Dimension(75, 25));
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +291,8 @@ public class UserUI extends javax.swing.JFrame {
             }
         });
 
+        discardButton.setBackground(new java.awt.Color(229, 204, 255));
+        discardButton.setForeground(new java.awt.Color(0, 0, 0));
         discardButton.setText("Discard");
         discardButton.setPreferredSize(new java.awt.Dimension(75, 25));
         discardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -285,6 +301,7 @@ public class UserUI extends javax.swing.JFrame {
             }
         });
 
+        jPanel9.setBackground(new java.awt.Color(229, 204, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Entry Type"));
 
         helpButtonGroup.add(jRadioButton1);
@@ -373,7 +390,7 @@ public class UserUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,6 +417,7 @@ public class UserUI extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("GetHelp", jPanel1);
 
+        jPanel3.setBackground(new java.awt.Color(244, 244, 244));
         jPanel3.setPreferredSize(new java.awt.Dimension(450, 450));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
@@ -407,6 +425,8 @@ public class UserUI extends javax.swing.JFrame {
 
         labelInfo1.setText("This is a virtual anonymous box where you can write to the student support");
 
+        saveButton1.setBackground(new java.awt.Color(229, 204, 255));
+        saveButton1.setForeground(new java.awt.Color(0, 0, 0));
         saveButton1.setText("Save");
         saveButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,6 +434,8 @@ public class UserUI extends javax.swing.JFrame {
             }
         });
 
+        discardButton1.setBackground(new java.awt.Color(229, 204, 255));
+        discardButton1.setForeground(new java.awt.Color(0, 0, 0));
         discardButton1.setText("DIscard");
         discardButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,16 +454,20 @@ public class UserUI extends javax.swing.JFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Narita\\Documents\\NetBeansProjects\\StudentSupportApp\\StudentSupportAP\\Data\\document.png")); // NOI18N
 
+        jPanel8.setBackground(new java.awt.Color(229, 204, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Entry Type"));
 
         anonGroup.add(jRadioButton7);
         jRadioButton7.setText("Suggestion");
+        jRadioButton7.setActionCommand("suggestion");
 
         anonGroup.add(jRadioButton8);
         jRadioButton8.setText("Complaint");
+        jRadioButton8.setActionCommand("complaint");
 
         anonGroup.add(jRadioButton10);
         jRadioButton10.setText("Other");
+        jRadioButton10.setActionCommand("other");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -495,7 +521,7 @@ public class UserUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,7 +556,7 @@ public class UserUI extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,17 +565,9 @@ public class UserUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Message", jPanel7);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        jTabbedPane2.setBackground(new java.awt.Color(244, 244, 244));
 
-        jLabel3.setText("jLabel3");
-
-        jLabel4.setText("jLabel4");
-
-        jLabel5.setText("Type:");
-
-        jLabel12.setText("Message:");
+        jPanel4.setBackground(new java.awt.Color(244, 244, 244));
 
         jLabel13.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel13.setText("Sent messages to the Student Support Council:");
@@ -558,7 +576,7 @@ public class UserUI extends javax.swing.JFrame {
         textArea.setRows(5);
         jScrollPane7.setViewportView(textArea);
 
-        histbutt.setText("See history");
+        histbutt.setText("View History");
         histbutt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 histbuttActionPerformed(evt);
@@ -572,32 +590,15 @@ public class UserUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel12))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(histbutt))
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel13))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(histbutt)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,61 +606,27 @@ public class UserUI extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(histbutt))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(histbutt)
+                .addGap(29, 29, 29))
         );
 
         jTabbedPane2.addTab("Sent", jPanel4);
 
-        jTextField4.setText("jTextField1");
-
-        jTextField5.setText("jTextField2");
-
-        jTextField6.setText("jTextField3");
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane6.setViewportView(jTextArea3);
-
-        jLabel14.setText("jLabel3");
-
-        jLabel15.setText("jLabel4");
-
-        jLabel16.setText("jLabel5");
-
-        jLabel17.setText("Message:");
+        jPanel6.setBackground(new java.awt.Color(244, 244, 244));
 
         jLabel18.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel18.setText("Received messages from the Student Support Council:");
 
-        listItem.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(listItem);
+        textAdmin.setColumns(20);
+        textAdmin.setRows(5);
+        jScrollPane4.setViewportView(textAdmin);
 
-        testinng.setText("TEst");
-        testinng.addActionListener(new java.awt.event.ActionListener() {
+        adminHistButt.setText("View History");
+        adminHistButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testinngActionPerformed(evt);
+                adminHistButtActionPerformed(evt);
             }
         });
 
@@ -673,56 +640,23 @@ public class UserUI extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(jLabel18))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jLabel15)
-                                        .addComponent(jLabel16))
-                                    .addComponent(jLabel17))
-                                .addGap(73, 73, 73)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(testinng)
-                .addGap(168, 168, 168))
+                        .addGap(256, 256, 256)
+                        .addComponent(adminHistButt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(testinng)
-                .addGap(66, 66, 66)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(adminHistButt)
+                .addGap(40, 40, 40))
         );
 
         jTabbedPane2.addTab("Received", jPanel6);
@@ -775,8 +709,8 @@ public class UserUI extends javax.swing.JFrame {
         Message m = new Message(type,input);
         try {
             mm.AddHelpStatement(m);
-            
-            
+            JOptionPane.showMessageDialog(null,"Successfully saved!");
+            messageInput.setText(" ");
             //JOptionPane.showMessageDialog(null, "Succesfully recorded!");
         } catch (SQLException ex) {
             Logger.getLogger(UserUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -799,6 +733,8 @@ public class UserUI extends javax.swing.JFrame {
         Message m = new Message(typeHelp, anon);
         try {
             mm.AddAnonStatement(m);
+            JOptionPane.showMessageDialog(null,"Successfully saved!");
+            messageInput.setText(" ");
         } catch (SQLException ex) {
             Logger.getLogger(UserUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -806,12 +742,28 @@ public class UserUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveButton1ActionPerformed
 
+    private void saveButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtActionPerformed
+        // TODO add your handling code here:
+        String name = nameField.getText();
+        String sn = surnameFiel.getText();
+        String ageStr = ageField.getText();
+        int age = Integer.parseInt(ageStr);
+        String gradeStr = gradeField.getText();
+        int grade = Integer.parseInt(gradeStr);
+        String userN = usernameField.getText();
+        String passW = passwordField.getText();
+        s = new Students(name, sn, age, grade, userN, passW);
+        JOptionPane.showMessageDialog(null,"Successfully saved!");
+        
+    }//GEN-LAST:event_saveButtActionPerformed
+
     private void histbuttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_histbuttActionPerformed
         // TODO add your handling code here:
         mm = new MessageManager();
         try {
-            
-            textArea.setText("Anonymouse: \n" + mm.displayAnonStatement() + "Help: \n" + mm.displayHelpStatement());
+
+            textArea.setText("\tAnonymous Messages: \n" +"\t--------------------------------\n"+ mm.displayAnonStatement() 
+                    + "\tHelp Messages: \n" +"\t------------------\n"+ mm.displayHelpStatement());
         } catch (SQLException ex) {
             Logger.getLogger(UserUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -819,11 +771,17 @@ public class UserUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_histbuttActionPerformed
 
-    private void testinngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testinngActionPerformed
+    private void adminHistButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminHistButtActionPerformed
         // TODO add your handling code here:
-        mm = new MessageManager();
-        System.out.println( mm.toString());
-    }//GEN-LAST:event_testinngActionPerformed
+        am = new AdminManager();
+        try {
+            textAdmin.setText("Messages: \n" + "---------"+ am.DisplayAdminMessage() );
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_adminHistButtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -867,12 +825,12 @@ public class UserUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminHistButt;
     private javax.swing.JTextField ageField;
     private javax.swing.ButtonGroup anonGroup;
     private javax.swing.JTextArea anonInput;
     private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton cancelButton;
     private javax.swing.JButton discardButton;
     private javax.swing.JButton discardButton1;
     private javax.swing.JTextField gradeField;
@@ -881,12 +839,7 @@ public class UserUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -896,9 +849,8 @@ public class UserUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -924,30 +876,21 @@ public class UserUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel labelInfo1;
-    private javax.swing.JList<String> listItem;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JTextField nameField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JButton saveButt;
     private javax.swing.JButton saveButton;
     private javax.swing.JButton saveButton1;
     private javax.swing.JTextField surnameFiel;
-    private javax.swing.JButton testinng;
+    private javax.swing.JTextArea textAdmin;
     private javax.swing.JTextArea textArea;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

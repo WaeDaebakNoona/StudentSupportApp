@@ -33,8 +33,32 @@ public class StudentsManager {
         size++;
     }
 
-    public boolean checkUser(boolean admin, String u, String p) throws SQLException {
-            //code inspired from PAT example2
+    public boolean checkStudent(boolean student, String u, String p) throws SQLException, ClassNotFoundException {
+        db = new DB();
+        String query = "SELECT * FROM naritaaDB.Userstbl;";
+        ResultSet rs = db.query(query);
+        if (!rs.isBeforeFirst()) {
+            return false;
+        } else {
+            while(rs.next()){
+            String id = rs.getString("UsersID");
+            String name = rs.getString("Name");
+            String surname = rs.getString("Surname");
+            int age = rs.getInt("Age");
+            int grade = rs.getInt("Grade");
+            String username = rs.getString("Username");
+            String password = rs.getString("Password");
+
+            if (username.equalsIgnoreCase(u) && password.equalsIgnoreCase(p)) {
+                return true;
+            }
+        }
+        }
+        return false;
+    }
+
+    public boolean checkAdmin(boolean admin, String u, String p) throws SQLException {
+        //code inspired from PAT example2
         if (admin) {
             try {
                 Scanner sc = new Scanner(new File("data//AdminPass.txt"));
@@ -49,50 +73,35 @@ public class StudentsManager {
                     }
                 }
                 sc.close();
-                return false;
+                
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(StudentsManager.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("LOGIN: Could not connect to database");
             }
-            return false;
-        } else {
-            String query = "SELECT * FROM naritaaDB.Userstbl;";
-            ResultSet rs = db.query(query);
-            if (!rs.isBeforeFirst()) {
-                return false;
-            } else {
-                rs.next();
-                String id = rs.getString("UsersID");
-                String name = rs.getString("Name");
-                String surname = rs.getString("Surname");
-                int age = rs.getInt("Age");
-                int grade = rs.getInt("Grade");
-                String username = rs.getString("Username");
-                String password = rs.getString("Password");
-                
-//                sArr = new Students[];
-                    return true;
-                
-
-            }
-
+            
         }
         return false;
-
+    }//end of method
+//    public static int currStudent(int search,sArr){
+//        for(int i = 0; i<;i++){
+//            if(){
+//            }
+//        }
+//        return -1;
+//    }
+    public String usersInfo() throws SQLException {
+        String output = "";
+        String query = "SELECT * FROM naritaaDB.Userstbl;";
+        ResultSet rs = db.query(query);
+        while (rs.next()) {
+            output += rs.getString("Name");
+            output += rs.getString("Surname");
+            output += rs.getInt("Age");
+            output += rs.getInt("Grade");
+            output += "\n";
+        }
+        return output;
     }
-    public String usersInfo() throws SQLException{
-          String output = "";
-          String query = "SELECT * FROM naritaaDB.Userstbl;";
-          ResultSet rs = db.query(query);
-          while(rs.next()){
-              output += rs.getString("Name");
-              output += rs.getString("Surname");
-              output += rs.getInt("Age");
-              output += rs.getInt("Grade");
-              output += "\n";
-          }
-          return output;
-      }
 
     @Override
     public String toString() {

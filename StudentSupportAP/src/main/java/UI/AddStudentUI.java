@@ -25,6 +25,7 @@ public class AddStudentUI extends javax.swing.JFrame {
      */
     public AddStudentUI() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     private StudentsManager sm;
     /**
@@ -56,7 +57,9 @@ public class AddStudentUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(224, 224, 224));
 
+        jPanel1.setBackground(new java.awt.Color(224, 224, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(330, 360));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
