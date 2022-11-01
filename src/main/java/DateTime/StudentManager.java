@@ -4,7 +4,10 @@
  */
 package DateTime;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -13,14 +16,17 @@ import java.util.Scanner;
  */
 public class StudentManager {
     
-    private Student [] students;
+    private Student [] sArr;
     private int size;
-    private String filePath = "data\\Students2.txt";
+    private String filePath = "data\\Student2.txt";
+    
     //input formatter
-    public StudentManager(){
+    
+    public StudentManager() throws FileNotFoundException{
         
+        sArr = new Student[10];
         size = 0;
-        Scanner sc = new Scanner(filePath);
+        Scanner sc = new Scanner(new File(filePath));
         
         while(sc.hasNext()){
             String line = sc.nextLine();
@@ -28,10 +34,23 @@ public class StudentManager {
             String name = lineSc.next();
             String surname = lineSc.next();
             String dateStr = lineSc.next();
-            LocalDate date = LocalDate.of(dateStr);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yy");
+            LocalDate date = LocalDate.parse(dateStr, dtf);
+            sArr[size] = new Student(name,surname,date);
+            size++;
             
         }
     }
+
+   public String toString(){
+       String output = "";
+       for(int i = 0 ; i<size ;i++){
+            output += sArr[i].toString() + "\n";
+       }
+       return output;
+   }
+    
+    
     
     
 }

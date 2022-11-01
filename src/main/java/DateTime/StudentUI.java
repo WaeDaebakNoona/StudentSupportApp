@@ -4,13 +4,16 @@
  */
 package DateTime;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author NaritaA
  */
 public class StudentUI {
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws FileNotFoundException {
+        StudentManager sm = new StudentManager();
+        System.out.println(sm);
     }
     
 }

@@ -30,7 +30,7 @@ public class Student {
     @Override
     public String toString() {
         
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         
         return "Student{" + "name=" + name + ", surname=" + surname + ", birthDate=" + birthDate.format(dtf) + '}';
     }
